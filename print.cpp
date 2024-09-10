@@ -1,12 +1,7 @@
 #include "print.h"
 
-void print( char text[][DEFAULT_NUMBER_OF_RAWS] )
+void print( char text[DEFAULT_NUMBER_OF_RAWS][DEFAULT_NUMBER_OF_COLUMNS], int count_of_raws )
 {
-    for ( int i = 0; i < DEFAULT_NUMBER_OF_LINES; i++ )
-    {
-            for ( int j = 0; j < DEFAULT_NUMBER_OF_RAWS; j++ )
-            {
-                printf( "%c", text[i][j] );
-            }
-    }
+    for ( int i = 0; i < count_of_raws; i++ )
+        printf( "%s\n", text[i] );
 }

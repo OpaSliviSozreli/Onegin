@@ -4,13 +4,13 @@
 
 #include "bubble_sort.h"
 
-void sort( char text[][DEFAULT_NUMBER_OF_RAWS] )
+void sort( char text[DEFAULT_NUMBER_OF_RAWS][DEFAULT_NUMBER_OF_COLUMNS] )
 {
     assert( text != NULL );
 
-    for ( int i = 0; i < DEFAULT_NUMBER_OF_LINES - 1; i++ )
+    for ( int i = 0; i < DEFAULT_NUMBER_OF_RAWS - 1; i++ )
     {
-        for ( int j = 0; j < DEFAULT_NUMBER_OF_RAWS; j++ )
+        for ( int j = 0; j < DEFAULT_NUMBER_OF_COLUMNS; j++ )
         {
             if ( compare_strings( text[i], text[i+1] ) > 0 )
             {
