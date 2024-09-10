@@ -12,7 +12,6 @@ int main()
 
     if ( !fp )
     {
-        printf ( "Something went wrong" );
         return SYS_ERROR;
     }
 
@@ -23,7 +22,8 @@ int main()
         for( int i = 0; i < DEFAULT_NUMBER_OF_RAWS; i++ )
         {
             char str[DEFAULT_NUMBER_OF_COLUMNS] = {};
-            fgets( str, DEFAULT_NUMBER_OF_RAWS, fp );
+
+            fgets( str, DEFAULT_NUMBER_OF_COLUMNS, fp );
             strcpy( text[i], str );
         }
 

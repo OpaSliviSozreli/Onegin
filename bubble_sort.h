@@ -1,8 +1,8 @@
 #ifndef _BUBBLE_SORT_H_
 #define _BUBBLE_SORT_H_
 
-const int DEFAULT_NUMBER_OF_RAWS = 50;
-const int DEFAULT_NUMBER_OF_COLUMNS = 10;
+const int DEFAULT_NUMBER_OF_RAWS = 101;
+const int DEFAULT_NUMBER_OF_COLUMNS = 100;
 
 const int SYS_ERROR = 0;
 const int END_OF_STRING = 0;
