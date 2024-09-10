@@ -5,6 +5,6 @@
 
 #include "bubble_sort.h"
 
-void print( char text[DEFAULT_NUMBER_OF_RAWS][DEFAULT_NUMBER_OF_COLUMNS], int count_of_raws );
+void print_onegin_text( char text[DEFAULT_NUMBER_OF_RAWS][DEFAULT_NUMBER_OF_COLUMNS], int count_of_raws );
 
 #endif

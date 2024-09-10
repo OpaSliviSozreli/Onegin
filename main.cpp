@@ -43,7 +43,7 @@ int main()
             }
 
             sort( text );
-            print( text, count_of_raws );
+            print_onegin_text( text, count_of_raws );
         }
 
         fclose(fp);
