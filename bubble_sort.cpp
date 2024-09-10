@@ -12,12 +12,12 @@ void sort( char text[DEFAULT_NUMBER_OF_RAWS][DEFAULT_NUMBER_OF_COLUMNS] )
     {
         for ( int j = 0; j < DEFAULT_NUMBER_OF_COLUMNS; j++ )
         {
-            if ( compare_strings( text[i], text[i+1] ) > 0 )
+            if ( compare_strings( text[i], text[i + 1] ) > 0 )
             {
                char t[DEFAULT_NUMBER_OF_RAWS] = {};
 
                strcpy( t, text[i] );
-               strcpy( text[i], text[i+1] );
+               strcpy( text[i], text[i + 1] );
                strcpy( text[i], t );
             }
         }
