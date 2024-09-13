@@ -4,34 +4,19 @@
 
 #include "bubble_sort.h"
 
-void sort( char text[DEFAULT_NUMBER_OF_RAWS][DEFAULT_NUMBER_OF_COLUMNS] )
-{
-    assert( text != NULL );
+void sort( char **ptrs_to_beginning_of_strings, int number_of_lines )
+{   
+    assert( ptrs_to_beginning_of_strings != NULL );
 
-    for ( int i = 0; i < DEFAULT_NUMBER_OF_RAWS - 1; i++ )
+    for ( int i = 0; i < number_of_lines - 1; i++ )
     {
-        for ( int j = 0; j < DEFAULT_NUMBER_OF_COLUMNS; j++ )
+        if ( strcmp( ptrs_to_beginning_of_strings[i], ptrs_to_beginning_of_strings[i + 1] ) > 0 )
         {
-            if ( compare_strings( text[i], text[i + 1] ) > 0 )
-            {
-               char t[DEFAULT_NUMBER_OF_RAWS] = {};
+            char* temp = ptrs_to_beginning_of_strings[i];
 
-               strcpy( t, text[i] );
-               strcpy( text[i], text[i + 1] );
-               strcpy( text[i], t );
-            }
+            ptrs_to_beginning_of_strings[i]     = ptrs_to_beginning_of_strings[i + 1];
+            ptrs_to_beginning_of_strings[i + 1] = temp;
         }
     }
-}
-
-int compare_strings( char *str1, char *str2 )
-{
-    while ( *str1 == *str2 )
-    {
-        if ( ( *str1++ + *str2++ ) == '\0' )
-            return END_OF_STRING;
-    }
-
-    return *str1 - *str2;
 }
 
