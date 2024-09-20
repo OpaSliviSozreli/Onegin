@@ -10,7 +10,7 @@ enum BEGINNING_OF_STR
     BEGINNING_OF_STR2 = 2
 };
 
-int  reversed_compare_strings( char *str1, char *str2, int number_of_lines );
-void sort_backwards( char **ptrs_to_beginning_of_strings, int number_of_lines );
+int  reversed_compare_strings( char *str1, char *str2 );
+void sort_backwards( int number_of_lines, char *ptrs_to_beginning_of_strings[] );
 
 #endif

@@ -3,6 +3,7 @@
 
 #include "const.h"
 
-void print_onegin_text( char **ptrs_to_beginning_of_strings, int number_of_lines );
+void print_onegin_text( int number_of_lines, char *ptrs_to_beginning_of_strings[] );
+int  input_onegin( char **text );
 
 #endif

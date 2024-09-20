@@ -3,6 +3,7 @@
 
 #include "const.h"
 
-void sort( char **ptrs_to_beginning_of_strings, int number_of_lines );
+//int  compare_str( char** str1, char** str2 ) ;
+void sort( int number_of_lines, char *ptrs_to_beginning_of_strings[] );
 
 #endif
