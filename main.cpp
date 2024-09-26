@@ -2,33 +2,48 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "bubble_sort.h"
-#include "print.h"
-#include "sort_backwards.h"
+#include "input_and_output.h"
+#include "sort_and_compare.h"
 #include "const.h"
+#include "structs.h"
 #include "array_of_pointers.h"
 
+
 int main( const int argc, const char *argv[] )
-{
-    char *text = NULL;
-
-    size_t number_of_successfully_read_elements = input_onegin( &text ); 
-    
-    int number_of_lines = count_number_of_lines( text, number_of_successfully_read_elements );
-    char **ptrs_to_beginning_of_strings = ( char ** ) calloc( number_of_lines + 1, sizeof( char * ));
-
-    fill_array_of_pointers( ptrs_to_beginning_of_strings, text, number_of_successfully_read_elements ); 
-    
-    // if ( argc == 2)
+{   
+    LinesOfEugeneOnegin lines_parameters = {};
+    TextOfEugeneOnegin original_text = {};
+//----------------------------------------------------------------------------------------------
+    //fprintf( stderr, "here in main before anything" );
+//----------------------------------------------------------------------------------------------
+    input_onegin( &original_text );
+//----------------------------------------------------------------------------------------------
+    //fprintf( stderr, "here in main after copying the file in bufffer" );
+//----------------------------------------------------------------------------------------------
+   split_text_into_lines( &lines_parameters, &original_text );
+//----------------------------------------------------------------------------------------------
+    //fprintf( stderr, "here in main, whwere is my favourite place for debug" );
+    // printf("----------------------------------------------------\n");
+    // for ( size_t i = 0; i < original_text.number_of_successfully_read_elements; i++ )
     // {
-    //     if ( strcmp( argv[1], "-b" ) == 0 )
-    //         sort_backwards( number_of_lines, ptrs_to_beginning_of_strings ); 
+    //     fprintf( stderr, "<%c><%d>\n", original_text.text[i], original_text.text[i] );
     // }
-    // else
-    //     sort( number_of_lines, ptrs_to_beginning_of_strings );
+    // printf("----------------------------------------------------\n");
+//----------------------------------------------------------------------------------------------
+    int ( *curr_compare )( char* str1, char* str2, char* end_of_str1, char* end_of_str2 ) = NULL;
 
-    sort_backwards( number_of_lines, ptrs_to_beginning_of_strings ); 
-    print_onegin_text( number_of_lines, ptrs_to_beginning_of_strings );
+    if ( argc == 2 )
+    {
+        if ( strcmp( argv[1], "backward" ) == 0 ) 
+            curr_compare = reversed_compare_strings; 
+
+        if ( strcmp( argv[1], "forward" ) == 0 ) 
+            curr_compare = forward_compare_strings; 
+    }
+    
+    sort( &lines_parameters, curr_compare );
+
+    print_sorted_text( &lines_parameters );
 
     return 0;   
 }

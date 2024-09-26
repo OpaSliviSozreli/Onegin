@@ -1,29 +1,30 @@
 CXX = g++
-SOURCES = main.cpp print.cpp bubble_sort.cpp sort_backwards.cpp array_of_pointers.cpp
+SOURCES = main.cpp input_and_output.cpp sort_and_compare.cpp array_of_pointers.cpp
 EXECUTABLE_FILE = sort_onegin
 CFLAGS = -b
 WARNINGS = -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-equal \
 		   -Winline -Wunreachable-code -Wmissing-declarations -Wmissing-include-dirs \
 		   -Wswitch-enum -Wswitch-default -Weffc++ -Wmain -Wextra -Wall -g -pipe \
 		   -fexceptions -Wcast-qual -Wconversion -Wctor-dtor-privacy -Wempty-body \
-		   -Wformat-security -Wformat=2 -Wignored-qualifiers -Wlogical-op -Wno-missing-field-initializers -Wnon-virtual-dtor -Woverloaded-virtual -Wpointer-arith -Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing -Wstrict-null-sentinel -Wtype-limits -Wwrite-strings -Werror=vla -D_DEBUG -D_EJUDGE_CLIENT_SIDE
+		   -Wformat-security -Wformat=2 -Wignored-qualifiers -Wlogical-op \
+		   -Wno-missing-field-initializers -Wnon-virtual-dtor -Woverloaded-virtual \
+		   -Wpointer-arith -Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing \
+		   -Wstrict-null-sentinel -Wtype-limits -Wwrite-strings -Werror=vla \
+		   -D_DEBUG -D_EJUDGE_CLIENT_SIDE
 
 all: sort_onegin
 
-sort_onegin: main.o print.o bubble_sort.o sort_backwards.o
+sort_onegin: main.o input&output.o sort_and_compare.o
 	$(CXX) $(SOURCES) -o $(EXECUTABLE_FILE) $(WARNINGS)
 
 main.o: main.cpp
 	$(CXX) main.cpp -c
 
-print.o: print.cpp
-	$(CXX) print.cpp -c
+input&output.o: input_and_output.cpp
+	$(CXX) input_and_output.cpp -c
 
-bubble_sort.o: bubble_sort.cpp
-	$(CXX) bubble_sort.cpp -c
-
-sort_backwards.o: sort_backwards.cpp
-	$(CXX) sort_backwards.cpp -c
+sort_and_compare.o: sort_and_compare.cpp
+	$(CXX) sort_and_compare.cpp -c
 
 array_of_pointers.o: array_of_pointers.cpp
-	$(CXX) array_of_pointers.cpp -o
+	$(CXX) array_of_pointers.cpp -c
