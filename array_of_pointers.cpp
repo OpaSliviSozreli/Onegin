@@ -22,13 +22,13 @@ void fill_array_of_pointers( LinesOfEugeneOnegin *lines_parameters, TextOfEugene
 {   
     assert( original_text->text != NULL );
 
-    lines_parameters->ptrs_to_strings = ( char ** ) calloc( lines_parameters->number_of_lines + 1, sizeof( char * ) );
-    lines_parameters->end_of_str = ( char ** ) calloc( lines_parameters->number_of_lines + 1, sizeof( char * ) );
-// TODO: поправить на структуры
+    lines_parameters->ptrs_to_strings = ( char** ) calloc( lines_parameters->number_of_lines + 1, sizeof( char * ) );
+    lines_parameters->array_of_lines_stat = ( LineStat** ) calloc( lines_parameters->number_of_lines + 1, sizeof( LineStat* ) );
+
     lines_parameters->ptrs_to_strings[0] = &original_text->text[0];
+    lines_parameters->lines_stat.string_start    = &original_text->text[0];
 
     int cur_str = 1;
-    int eldack = 0;
 //----------------------------------------------------------------------------------------------
     //fprintf(stderr, "size = %d\n", original_text->number_of_successfully_read_elements);
 //------------------------------------------------------------------------------------------------
@@ -47,9 +47,11 @@ void fill_array_of_pointers( LinesOfEugeneOnegin *lines_parameters, TextOfEugene
             //fprintf(stderr, "after change:  <%c><%d>\n", original_text->text[i], original_text->text[i]);
             //fprintf( stderr, " <%d>, %p\n", i, &original_text->text[i] );
 //-----------------------------------------------------------------------------------------------------------------
-            lines_parameters->end_of_str[eldack++] = &original_text->text[i];
+            *lines_parameters->array_of_lines_stat[i] = lines_parameters->lines_stat;
+            lines_parameters->lines_stat.string_end = &original_text->text[i];
+            fprintf( stderr, "here" );
 //------------------------------------------------------------------------------------------------
-            //fprintf( stderr, "%d, <%p><%s>\n", eldack - 1, lines_parameters->end_of_str[eldack - 1], lines_parameters->end_of_str[eldack - 1] );
+            //fprintf( stderr, "<%p><%s>\n", lines_parameters->lines_stat.string_end, lines_parameters->lines_stat.string_end );
 //------------------------------------------------------------------------------------------------
         }
          
@@ -60,12 +62,18 @@ void fill_array_of_pointers( LinesOfEugeneOnegin *lines_parameters, TextOfEugene
             //fprintf( stderr, "<%c><%d>\n", original_text->text[i], original_text->text[i] );
 //------------------------------------------------------------------------------------------------
             lines_parameters->ptrs_to_strings[cur_str++] = &original_text->text[i + 1];
+            lines_parameters->lines_stat.string_start    = &original_text->text[i + 1];
 //------------------------------------------------------------------------------------------------
             //fprintf( stderr, "%d, <%p><%s>\n", cur_str - 1, lines_parameters->ptrs_to_strings[cur_str -1], lines_parameters->ptrs_to_strings[cur_str - 1] );
 //------------------------------------------------------------------------------------------------       
         }
-    }
 
+        //*lines_parameters->array_of_lines_stat[i] = lines_parameters->lines_stat;
+//--------------------------------------------------------
+            //fprintf( stderr, " the start %s\n", lines_parameters->lines_stat.string_start );
+            //fprintf( stderr, " the end %s\n", lines_parameters->lines_stat.string_end );
+//--------------------------------------------------------
+    }
 //------------------------------------------------------------------------------------------------
     //lines_parameters->end_of_str[lines_parameters->number_of_lines] = &original_text->text[original_text->number_of_successfully_read_elements];
 //------------------------------------------------------------------------------------------------

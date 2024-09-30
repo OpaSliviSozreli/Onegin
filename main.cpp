@@ -30,7 +30,7 @@ int main( const int argc, const char *argv[] )
     // }
     // printf("----------------------------------------------------\n");
 //----------------------------------------------------------------------------------------------
-    int ( *curr_compare )( char* str1, char* str2, char* end_of_str1, char* end_of_str2 ) = NULL;
+    int ( *curr_compare )( LineStat* line_stat1, LineStat* line_stat2 ) = NULL;
 
     if ( argc == 2 )
     {
@@ -41,7 +41,7 @@ int main( const int argc, const char *argv[] )
             curr_compare = forward_compare_strings; 
     }
     
-    sort( &lines_parameters, curr_compare );
+    sort( &lines_parameters, sizeof( char* ), lines_parameters.number_of_lines,  curr_compare );
 
     print_sorted_text( &lines_parameters );
 

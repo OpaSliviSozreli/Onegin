@@ -6,7 +6,7 @@
 
 void print_sorted_text( LinesOfEugeneOnegin *lines_parameters )
 {
-    FILE * fp_result = fopen ( "Result.txt" , "wb" );  // TODO: хули звезда в середине блять???...
+    FILE* fp_result = fopen ( "Result.txt" , "wb" );  
 
     for ( int i = 0; i < lines_parameters->number_of_lines; i++ )
     {
@@ -17,11 +17,11 @@ void print_sorted_text( LinesOfEugeneOnegin *lines_parameters )
     fclose ( fp_result );
 }
 
-ReadingErrors input_onegin( TextOfEugeneOnegin *original_text ) // TODO: лепи звезды с одного краю!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ReadingErrors input_onegin( TextOfEugeneOnegin* original_text ) 
 {
-    const char *filename = "Onegin.txt"; // с одного блять...
+    const char* filename = "Onegin.txt"; 
 
-    FILE *fp = fopen( filename, "rb" ); // с одного блять...
+    FILE* fp = fopen( filename, "rb" ); 
 
     if ( !fp )
         return SYS_ERROR;
@@ -38,7 +38,7 @@ ReadingErrors input_onegin( TextOfEugeneOnegin *original_text ) // TODO: леп�
     return READING_WENT_OK;
 }
 
-int count_file_size( FILE *fp ) // с одного блять...!!!
+int count_file_size( FILE* fp ) 
 {
     fseek( fp, 0, SEEK_END );
     size_t file_size = ftell( fp );                         

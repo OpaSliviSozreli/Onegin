@@ -3,31 +3,23 @@
 
 #include <stdio.h>
 
-struct LinesOfEugeneOnegin
+struct LineStat 
 {
-    int number_of_lines;
-//    LineStat* line_stat;
-//    LineStat** lines_stat;
-    char** ptrs_to_strings;   
-    char** end_of_str;        
+    char* string_start;
+    char* string_end;
 };
 
-// LineStat {
-//     char* string;
-//     size_t string_len;
-// };
-
-// //или
-
-// struct LineStat 
-// {
-//     char* string_start;
-//     char* string_end;
-// };
+struct LinesOfEugeneOnegin
+{
+    int        number_of_lines;
+    LineStat   lines_stat;
+    LineStat** array_of_lines_stat;
+    char**     ptrs_to_strings;       
+};
 
 struct TextOfEugeneOnegin
 {
-    char* text;
+    char*  text;
     size_t number_of_successfully_read_elements;
 };
 

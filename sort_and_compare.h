@@ -10,8 +10,8 @@ enum BEGINNING_OF_STR
     BEGINNING_OF_STR2 = 2
 };
 
-int  reversed_compare_strings( char* str1, char* str2, char* end_of_str1, char* end_of_str2 );
-void sort( LinesOfEugeneOnegin *lines_parameters,  int ( *curr_compare )( char* str1, char* str2, char* end_of_str1, char* end_of_str2 ) );
-int  forward_compare_strings( char* str1, char* str2, char* end_of_str1, char* end_of_str2 );
+int  reversed_compare_strings( LineStat* line_stat1, LineStat* line_stat2 );
+void sort( LinesOfEugeneOnegin *lines_parameters, size_t size_of_cell, int size_of_array,   int curr_compare( LineStat* line_stat1, LineStat* line_stat2 ) );
+int  forward_compare_strings( LineStat* line_stat1, LineStat* line_stat2 );
 
 #endif

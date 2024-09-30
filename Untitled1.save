@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int const DEFAULT_STRING_LENGTHS = 50;
+int const DEFAULT_NUMBER_OF_RAWS = 10;
+
+int sort( char text[DEFAULT_STRING_LENGTHS][DEFAULT_NUMBER_OF_RAWS] );
+
+int main()
+{
+    char * filename = "Onegin.txt";
+
+    char text[DEFAULT_STRING_LENGTHS][DEFAULT_NUMBER_OF_RAWS] = {};
+
+    FILE *fp = fopen( filename, "r" );
+
+    if ( fp )
+    {
+        fgets( text[DEFAULT_STRING_LENGTHS][DEFAULT_NUMBER_OF_RAWS], DEFAULT_NUMBER_OF_RAWS, fp );
+        sort( text[DEFAULT_STRING_LENGTHS][DEFAULT_NUMBER_OF_RAWS] );
+}
+
+int sort( char text[DEFAULT_STRING_LENGTHS][DEFAULT_NUMBER_OF_RAWS] )
+{
+    for ( int i = 0, i < DEFAULT_STRING_LENGTHS; i++ )
+    {
+        for ( int j = 0; j < DEFAULT_NUMBER_OF_RAWS; j++ )
+        {
+            char t = 0;
+
+            if ( text[i][j] > text[i+1][j+1] )
+            {
+               t = text[i][j];
+               text[i][j] = text[i+1][j+1];
+               text[i+1][j+1] = t;
+            }
+        }
+    }
+}
+
